@@ -1,0 +1,16 @@
+.homePage {
+  margin-top: 66px;
+  padding-top: 16px;
+}
+.title {
+  text-align: center;
+}
+.intro {
+  text-align: justify;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
