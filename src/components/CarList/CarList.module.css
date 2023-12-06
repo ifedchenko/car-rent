@@ -1,0 +1,24 @@
+.catalogCarsList {
+  list-style: none;
+  margin-top: 116px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 29px;
+  row-gap: 50px;
+}
+
+.catalogCarsItem {
+  position: relative;
+}
+.catalogCarsItemImg {
+  content: '';
+  position: absolute;
+  top: -10px; /* Замените это значение на желаемое расположение тени */
+  left: 10px; /* Замените это значение на желаемое расположение тени */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)); /* Можно настроить цвет тени */
+  z-index: 1; /* Чтобы тень находилась поверх изображения */
+}

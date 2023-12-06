@@ -8,7 +8,7 @@ export default function Home() {
     <section className={css.welcome}>
       <div className={css.homePage}>
         <h1 className={css.title}>
-          Welcome <br></br>Car Rental Service!
+          Welcome <br></br>to Car Rental Service!
         </h1>
         <p className={css.intro}>
           Your journey to discovering the most budget-friendly and convenient car hire starts here.
@@ -24,6 +24,78 @@ export default function Home() {
         <Link className={css.button} to="/catalog">
           <Button variant="contained">Book now!</Button>
         </Link>
+        <ul className={css.parnersList}>
+          <li className={css.parnersListItem}>
+            <img
+              src="https://static.brandirectory.com/logos/ente001_enterprise.png"
+              alt="enterprise"
+              width="50"
+            />
+          </li>
+          <li className={css.parnersListItem}>
+            <img
+              src="https://static.brandirectory.com/logos/herz002_hertz_logo_black.png"
+              alt="Hertz"
+              width="50"
+            />
+          </li>
+          <li className={css.parnersListItem}>
+            <img
+              src="https://static.brandirectory.com/logos/avis002_avis.png"
+              alt="Avis"
+              width="50"
+            />
+          </li>
+          <li className={css.parnersListItem}>
+            <img
+              src="https://static.brandirectory.com/logos/eurr002_europcar.jpg"
+              alt="Europcar"
+              width="50"
+            />
+          </li>
+          <li className={css.parnersListItem}>
+            <img
+              src="https://static.brandirectory.com/logos/sixt002_2cebdb1b_45ac_42bb_ad16_50ff53fdb09a.png"
+              alt="Sixt"
+              width="50"
+            />
+          </li>
+          <li className={css.parnersListItem}>
+            <img
+              src="https://static.brandirectory.com/logos/budt002_budget_logosvg.png"
+              alt="Budget"
+              width="50"
+            />
+          </li>
+          <li className={css.parnersListItem}>
+            <img
+              src="https://static.brandirectory.com/logos/natl006_national_car_rental.png"
+              alt="National Car Rental"
+              width="50"
+            />
+          </li>
+          <li className={css.parnersListItem}>
+            <img
+              src="https://static.brandirectory.com/logos/alar001_alamo_rent_a_car.png"
+              alt="Alamo"
+              width="50"
+            />
+          </li>
+          <li className={css.parnersListItem}>
+            <img
+              src="https://static.brandirectory.com/logos/mots007_motus.jpg"
+              alt="Motus"
+              width="50"
+            />
+          </li>
+          <li className={css.parnersListItem}>
+            <img
+              src="https://static.brandirectory.com/logos/locr001_download_4.png"
+              alt="Localiza"
+              width="50"
+            />
+          </li>
+        </ul>
       </div>
     </section>
   );
