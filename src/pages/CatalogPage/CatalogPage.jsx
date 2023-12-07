@@ -21,7 +21,7 @@ const Catalog = () => {
   }, []);
 
   return (
-    <section className={css.moviesPage}>
+    <section className={css.catalogPage}>
       {/* <SearchBar onSubmit={onSubmit} />
         {cars && <CarList cars={cars} prevLocation={location} />} */}
       <CarList cars={cars} />

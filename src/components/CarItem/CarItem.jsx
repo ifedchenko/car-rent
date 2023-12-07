@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-// import Typography from '@mui/material/Typography';
+import { Button } from '@mui/material';
 import css from './CarItem.module.css';
 
 const CarItem = ({ car }) => {
@@ -38,7 +38,10 @@ const CarItem = ({ car }) => {
         />
         <div className={css.catalogCarsItemDetails}>
           <div className={css.catalogCarsItemInfo}>
-            {car.make} <span>{car.model}</span>, {car.year}
+            <p className={css.carInfo}>{car.make}</p>
+            <p className={css.modelInfo}>
+              {car.model}, {car.year}
+            </p>
           </div>
           <div className={css.catalogCarsIntro}>{car.rentalPrice}</div>
         </div>
@@ -50,23 +53,28 @@ const CarItem = ({ car }) => {
         >
           <p className={css.catalogCarsItemDetailsMore}>
             {city}
-            <span>|</span>
+            <span></span>|<span></span>
             {country}
-            <span>|</span>
+            <span></span>|<span></span>
             {car.rentalCompany}
-            <span>|</span>Premium
+            <span></span>|<span></span>
+            Premium
           </p>
 
           <p className={css.catalogCarsItemDetailsMore}>
             {car.type}
-            <span>|</span>
+            <span></span>|<span></span>
             {car.model}
-            <span>|</span>
+            <span></span>|<span></span>
+            {car.mileage}
+            <span></span>|<span></span>
             {car.accessories[0]}
           </p>
         </CardContent>
       </Card>
-      <div></div>
+      <Button className={css.button} variant="contained">
+        Learn More
+      </Button>
     </li>
   );
 };
