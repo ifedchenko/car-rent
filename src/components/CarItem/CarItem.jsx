@@ -39,9 +39,8 @@ const CarItem = ({ car }) => {
         <div className={css.catalogCarsItemDetails}>
           <div className={css.catalogCarsItemInfo}>
             <p className={css.carInfo}>{car.make}</p>
-            <p className={css.modelInfo}>
-              {car.model}, {car.year}
-            </p>
+            <p className={css.modelInfo}>{car.model}, </p>
+            <p className={css.carInfoYear}>{car.year}</p>
           </div>
           <div className={css.catalogCarsIntro}>{car.rentalPrice}</div>
         </div>

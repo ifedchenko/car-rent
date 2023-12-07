@@ -3,7 +3,6 @@ import CarList from '../../components/CarList/CarList';
 import { useEffect, useState } from 'react';
 import { fetchCars } from '../../helpers/fetchCars';
 // import { useSearchParams, useLocation } from 'react-router-dom';
-import css from './CatalogPage.module.css';
 
 const Catalog = () => {
   const [cars, setCars] = useState([]);
@@ -21,7 +20,7 @@ const Catalog = () => {
   }, []);
 
   return (
-    <section className={css.catalogPage}>
+    <section className="container">
       {/* <SearchBar onSubmit={onSubmit} />
         {cars && <CarList cars={cars} prevLocation={location} />} */}
       <CarList cars={cars} />

@@ -21,6 +21,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.carInfoYear {
+  margin-left: 3px;
+}
 .modelInfo {
   color: #3470ff;
   max-width: 150px;
