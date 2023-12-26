@@ -1,18 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Button } from '@mui/material';
+import { createPortal } from 'react-dom';
+import Modal from '../Modal/Modal';
 import css from './CarItem.module.css';
 
 const CarItem = ({ car }) => {
-  const address = car.address;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const {
+    id,
+    address,
+    img,
+    make,
+    model,
+    year,
+    rentalPrice,
+    rentalCompany,
+    type,
+    mileage,
+    accessories,
+  } = car;
+
   const addressParts = address.split(', ');
-  const city = addressParts[1];
-  const country = addressParts[2];
+  let city = '';
+  let country = '';
+
+  if (addressParts.length >= 3) {
+    city = addressParts[1];
+    country = addressParts[2];
+  }
+
+  // const address = car.address;
+  // const addressParts = address.split(', ');
+  // const city = addressParts[1];
+  // const country = addressParts[2];
 
   return (
-    <li className={css.catalogCarsItem} key={car.id}>
+    <li className={css.catalogCarsItem} key={id} car={car}>
+      {/* <li className={css.catalogCarsItem}> */}
       <Card sx={{ boxShadow: 'none', width: 274 }}>
         <CardMedia
           sx={{
@@ -23,6 +51,7 @@ const CarItem = ({ car }) => {
             '&::before': {
               content: '""',
               position: 'absolute',
+              borderRadius: 4,
               top: 0,
               left: 0,
               width: '100%',
@@ -32,17 +61,18 @@ const CarItem = ({ car }) => {
               zIndex: 2,
             },
           }}
-          component="img"
-          image={car.img}
-          title={car.make}
+          // component="img"
+          image={img}
+          title={make}
+          alt={`Image of ${make}`}
         />
         <div className={css.catalogCarsItemDetails}>
           <div className={css.catalogCarsItemInfo}>
-            <p className={css.carInfo}>{car.make}</p>
-            <p className={css.modelInfo}>{car.model}, </p>
-            <p className={css.carInfoYear}>{car.year}</p>
+            <p className={css.carInfo}>{make}</p>
+            <p className={css.modelInfo}>{model}, </p>
+            <p className={css.carInfoYear}>{year}</p>
           </div>
-          <div className={css.catalogCarsIntro}>{car.rentalPrice}</div>
+          <div className={css.catalogCarsIntro}>{rentalPrice}</div>
         </div>
         <CardContent
           sx={{
@@ -55,25 +85,30 @@ const CarItem = ({ car }) => {
             <span></span>|<span></span>
             {country}
             <span></span>|<span></span>
-            {car.rentalCompany}
+            {rentalCompany}
             <span></span>|<span></span>
             Premium
           </p>
 
           <p className={css.catalogCarsItemDetailsMore}>
-            {car.type}
+            {type}
             <span></span>|<span></span>
-            {car.model}
+            {model}
             <span></span>|<span></span>
-            {car.mileage}
+            {mileage}
             <span></span>|<span></span>
-            {car.accessories[0]}
+            {accessories[0]}
           </p>
         </CardContent>
       </Card>
-      <Button className={css.button} variant="contained">
+      <Button className={css.button} variant="contained" onClick={() => setIsModalOpen(true)}>
         Learn More
       </Button>
+      {isModalOpen &&
+        createPortal(
+          <Modal car={car} city={city} country={country} setIsModalOpen={setIsModalOpen} />,
+          document.getElementById('modal')
+        )}
     </li>
   );
 };

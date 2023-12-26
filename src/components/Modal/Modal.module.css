@@ -1,0 +1,144 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 20, 23, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  max-width: 541px;
+  text-align: center;
+}
+
+.modalCarsItemInfo {
+  display: flex;
+  gap: 4px;
+  /* justify-content: space-between; */
+  color: #121417;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  /* padding-right: 9px; */
+  margin-top: 14px;
+  margin-bottom: 8px;
+}
+
+.modalModelInfo {
+  color: #3470ff;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modalModelInfo span {
+  color: #121417;
+}
+
+.modalCarsItemDetailsMore {
+  color: rgba(18, 20, 23, 0.5);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
+  text-align: left;
+}
+
+.modalCarsItemDetailsMore:first-child {
+  margin-bottom: 4px;
+}
+
+.modalCarsItemDetailsMore span {
+  margin-right: 4px;
+}
+
+.modalCarsItemDescription {
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  margin-top: 14px;
+}
+
+.modalCarsItemAccesories {
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+  margin-top: 24px;
+}
+
+.modalAccesoriesList {
+  display: flex;
+  flex-wrap: wrap;
+  color: rgba(18, 20, 23, 0.5);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
+  margin-top: 8px;
+}
+
+.modalAccesoriesList span {
+  margin-right: 3px;
+  margin-left: 3px;
+  color: rgba(18, 20, 23, 0.1);
+}
+
+.modalRentalConditionsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modalRentalConditionsTitle {
+  margin-top: 24px;
+  margin-bottom: 8px;
+  text-align: left;
+  color: #121417;
+
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+}
+
+.modalRentalConditionsListItem {
+  display: flex;
+  padding: 7px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 35px;
+  background: #f9f9f9;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
+  letter-spacing: -0.24px;
+}
+
+.modalRentalConditionsListItem span {
+  color: #3470ff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.24px;
+}
