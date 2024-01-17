@@ -13,7 +13,6 @@ const Modal = ({ car, city, country, setIsModalOpen }) => {
 
   const {
     id,
-
     img,
     make,
     model,
@@ -34,6 +33,15 @@ const Modal = ({ car, city, country, setIsModalOpen }) => {
   const combinedList = accessoriesData.concat(functionalitiesData);
 
   const rentalConditionData = rentalConditions.split('\n');
+  const handleRentCarClick = () => {
+    const localStorageCars = JSON.parse(localStorage.getItem('cars')) || [];
+    const carExists = localStorageCars.some(savedCar => savedCar.id === car.id);
+    if (!carExists) {
+      localStorageCars.push(car);
+      localStorage.setItem('cars', JSON.stringify(localStorageCars));
+    }
+    setIsModalOpen(false);
+  };
 
   return ReactDOM.createPortal(
     <div className={css.overlay} role="dialog" aria-modal="true">
@@ -133,15 +141,19 @@ const Modal = ({ car, city, country, setIsModalOpen }) => {
 
         <Button
           variant="contained"
-          onClick={() => setIsModalOpen(false)}
+          onClick={() => {
+            handleRentCarClick();
+          }}
           className={css.rentCarButton}
           style={{ float: 'left' }}
         >
           Rental Car
         </Button>
-        {/* <Button variant="contained" onClick={() => setIsModalOpen(false)} className={css.button}>
-          Close
-        </Button> */}
+        <button className={css.modalCloseBtn} type="button" onClick={() => setIsModalOpen(false)}>
+          <svg className={css.modalCloseSvg} width="24" height="24">
+            <use href="/src/images/sprite.svg#icon-modal-close-btn"></use>
+          </svg>
+        </button>
       </div>
     </div>,
     document.getElementById('modal')

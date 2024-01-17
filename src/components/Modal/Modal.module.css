@@ -19,6 +19,7 @@
   z-index: 1001;
   max-width: 541px;
   text-align: center;
+  position: relative;
 }
 
 .modalCarsItemInfo {
@@ -141,4 +142,31 @@
   font-weight: 600;
   line-height: 18px;
   letter-spacing: -0.24px;
+}
+
+.closeButton {
+  width: 32px;
+  height: 32px;
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  color: #000;
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.modalCloseSvg {
+  fill: #000;
+  display: block;
+}
+
+.modalCloseBtn:hover {
+  color: #fff;
+  background-color: blue;
 }
