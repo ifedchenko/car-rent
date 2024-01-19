@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import css from './Modal.module.css';
+import sprite from '.././../images/sprite.svg';
 
 const Modal = ({ car, city, country, setIsModalOpen }) => {
   if (!car) {
@@ -150,8 +151,8 @@ const Modal = ({ car, city, country, setIsModalOpen }) => {
           Rental Car
         </Button>
         <button className={css.modalCloseBtn} type="button" onClick={() => setIsModalOpen(false)}>
-          <svg className={css.modalCloseSvg} width="24" height="24">
-            <use href="/src/images/sprite.svg#icon-modal-close-btn"></use>
+          <svg className={css.modalCloseSvg}>
+            <use href={sprite + '#icon-modal-close'}></use>
           </svg>
         </button>
       </div>

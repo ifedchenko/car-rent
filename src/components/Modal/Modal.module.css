@@ -151,22 +151,25 @@
 
 .modalCloseBtn {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 20px;
+  right: 20px;
+  padding: 0;
   width: 24px;
   height: 24px;
-  color: #000;
+
   background-color: transparent;
   border: 1px solid transparent;
   cursor: pointer;
 }
 
 .modalCloseSvg {
-  fill: #000;
-  display: block;
+  stroke: #121417;
+
+  width: 24px;
+  height: 24px;
 }
 
-.modalCloseBtn:hover {
+/* .modalCloseBtn:hover {
   color: #fff;
   background-color: blue;
-}
+} */
