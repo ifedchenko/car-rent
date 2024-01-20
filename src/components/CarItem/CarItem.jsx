@@ -6,6 +6,7 @@ import { Button } from '@mui/material';
 import { createPortal } from 'react-dom';
 import Modal from '../Modal/Modal';
 import css from './CarItem.module.css';
+import sprite from '.././../images/sprite.svg';
 
 const CarItem = ({ car }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,9 +40,15 @@ const CarItem = ({ car }) => {
   // const country = addressParts[2];
 
   return (
-    <li className={css.catalogCarsItem} key={id} car={car}>
+    // <li className={css.catalogCarsItem} key={id} car={car}>
+    <li className={css.catalogCarsItem} key={id}>
       {/* <li className={css.catalogCarsItem}> */}
       <Card sx={{ boxShadow: 'none', width: 274 }}>
+        <button className={css.carItemHeartButton} type="button">
+          <svg className={css.heartSvg}>
+            <use href={sprite + '#icon-heart'}></use>
+          </svg>
+        </button>
         <CardMedia
           sx={{
             position: 'relative',
@@ -105,6 +112,7 @@ const CarItem = ({ car }) => {
         Learn More
       </Button>
       {isModalOpen &&
+        document.getElementById('modal') &&
         createPortal(
           <Modal car={car} city={city} country={country} setIsModalOpen={setIsModalOpen} />,
           document.getElementById('modal')

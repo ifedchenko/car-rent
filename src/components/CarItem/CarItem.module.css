@@ -1,3 +1,7 @@
+.catalogCarsItem {
+  position: relative;
+}
+
 .catalogCarsItemDetails {
   display: flex;
   justify-content: space-between;
@@ -50,4 +54,24 @@
 
 .button {
   width: 100%;
+}
+
+.carItemHeartButton {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.heartSvg {
+  stroke: #ffffffcc;
+  fill: transparent;
+  width: 18px;
+  height: 18px;
 }
