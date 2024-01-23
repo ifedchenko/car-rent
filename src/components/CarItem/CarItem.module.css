@@ -75,3 +75,8 @@
   width: 18px;
   height: 18px;
 }
+
+.heartSvg:hover {
+  stroke: #3470ff;
+  fill: #3470ff;
+}

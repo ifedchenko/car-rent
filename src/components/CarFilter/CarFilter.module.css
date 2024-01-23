@@ -1,0 +1,15 @@
+.carFilter {
+  margin-top: 100px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.carBrandTitle {
+  color: #8a8a89;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 18px;
+  margin-top: 8px;
+}

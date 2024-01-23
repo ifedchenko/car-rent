@@ -1,5 +1,5 @@
 import CarList from '../../components/CarList/CarList';
-// import CarFilter from '../../components/CarFilter.CarFilter';
+import CarFilter from '../../components/CarFilter/CarFilter';
 import { useEffect, useState } from 'react';
 import { fetchCars } from '../../helpers/fetchCars';
 // import { useSearchParams, useLocation } from 'react-router-dom';
@@ -23,6 +23,7 @@ const Catalog = () => {
     <section className="container">
       {/* <SearchBar onSubmit={onSubmit} />
         {cars && <CarList cars={cars} prevLocation={location} />} */}
+      <CarFilter cars={cars} />
       <CarList cars={cars} />
     </section>
   );
