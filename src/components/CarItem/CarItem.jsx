@@ -8,11 +8,27 @@ import Modal from '../Modal/Modal';
 import css from './CarItem.module.css';
 import sprite from '.././../images/sprite.svg';
 
-const CarItem = ({ car }) => {
+const CarItem = ({ car, index }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFavorite, setIsFavorite] = React.useState(() => {
+    const favoriteCars = JSON.parse(localStorage.getItem('favoriteCars')) || {};
+    return !!favoriteCars[car.id];
+  });
+
+  const toggleFavoriteStatus = () => {
+    const newFavoriteStatus = !isFavorite;
+    setIsFavorite(newFavoriteStatus);
+
+    const favoriteCars = JSON.parse(localStorage.getItem('favoriteCars')) || {};
+    if (newFavoriteStatus) {
+      favoriteCars[car.id] = true;
+    } else {
+      delete favoriteCars[car.id];
+    }
+    localStorage.setItem('favoriteCars', JSON.stringify(favoriteCars));
+  };
 
   const {
-    id,
     address,
     img,
     make,
@@ -41,11 +57,23 @@ const CarItem = ({ car }) => {
 
   return (
     // <li className={css.catalogCarsItem} key={id} car={car}>
-    <li className={css.catalogCarsItem} key={id}>
+    <li className={css.catalogCarsItem} key={index}>
       {/* <li className={css.catalogCarsItem}> */}
       <Card sx={{ boxShadow: 'none', width: 274 }}>
-        <button className={css.carItemHeartButton} type="button">
-          <svg className={css.heartSvg}>
+        <button
+          className={css.carItemHeartButton}
+          type="button"
+          aria-label="Toggle favorite"
+          onClick={toggleFavoriteStatus}
+        >
+          <svg
+            className={css.heartSvg}
+            style={{
+              fill: isFavorite ? '#3470FF' : 'none',
+              stroke: isFavorite ? '#3470FF' : '#ffffffcc',
+            }}
+            aria-hidden="true"
+          >
             <use href={sprite + '#icon-heart'}></use>
           </svg>
         </button>

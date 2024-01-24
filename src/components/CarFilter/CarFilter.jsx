@@ -1,4 +1,3 @@
-// import React, { useState } from 'react';
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -10,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import css from './CarFilter.module.css';
 
-const Filter = ({ cars }) => {
+const Filter = ({ setFilteredCars, cars }) => {
   const [carBrand, setCarBrand] = useState('');
   const [carPrice, setCarPrice] = useState('');
   const [mileageFrom, setMileageFrom] = useState('');
@@ -19,17 +18,27 @@ const Filter = ({ cars }) => {
   const handleChangeModel = event => {
     setCarBrand(event.target.value);
   };
-
   const handleChangePrice = event => {
     setCarPrice(event.target.value);
   };
-
   const handleChangeMileageFrom = event => {
     setMileageFrom(event.target.value);
   };
-
   const handleChangeMileageTo = event => {
     setMileageTo(event.target.value);
+  };
+
+  const handleSearch = () => {
+    const filteredCars = cars.filter(car => {
+      const matchBrand = carBrand ? car.make === carBrand : true;
+      const matchPrice = carPrice ? parseFloat(car.rentalPrice.slice(1)) <= carPrice : true;
+      const matchMileage =
+        (mileageFrom ? car.mileage >= mileageFrom : true) &&
+        (mileageTo ? car.mileage <= mileageTo : true);
+      return matchBrand && matchPrice && matchMileage;
+    });
+    setFilteredCars(filteredCars);
+    console.log(filteredCars);
   };
 
   const carBrands = cars
@@ -146,8 +155,10 @@ const Filter = ({ cars }) => {
         <TextField
           sx={{ width: 160, backgroundColor: '#F7F7FB' }}
           id="mileage-from"
+          value={mileageFrom}
           label="From"
           type="number"
+          onChange={handleChangeMileageFrom}
           InputLabelProps={{
             shrink: true,
           }}
@@ -155,8 +166,10 @@ const Filter = ({ cars }) => {
         <TextField
           sx={{ width: 160, backgroundColor: '#F7F7FB', marginLeft: -0.1 }}
           id="mileage-to"
+          value={mileageTo}
           label="To"
           type="number"
+          onChange={handleChangeMileageTo}
           InputLabelProps={{
             shrink: true,
           }}
@@ -173,6 +186,7 @@ const Filter = ({ cars }) => {
           paddingRight: 5.5,
         }}
         variant="contained"
+        onClick={handleSearch}
       >
         Search
       </Button>
