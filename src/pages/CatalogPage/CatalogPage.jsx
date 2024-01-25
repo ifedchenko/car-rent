@@ -32,7 +32,7 @@ const Catalog = () => {
       }
     }
     fetchSearchCars();
-  }, []);
+  }, [page]);
 
   return (
     <section className="container">
