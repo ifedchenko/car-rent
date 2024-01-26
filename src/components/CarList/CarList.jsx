@@ -6,8 +6,8 @@ const CarList = ({ cars }) => {
   return (
     <div className={css.carList}>
       <ul className={css.catalogCarsList}>
-        {cars?.map((car, index) => (
-          <CarItem key={index} car={car} />
+        {cars?.map(car => (
+          <CarItem key={car.id} car={car} />
         ))}
       </ul>
     </div>

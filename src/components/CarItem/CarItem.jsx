@@ -8,7 +8,7 @@ import Modal from '../Modal/Modal';
 import css from './CarItem.module.css';
 import sprite from '.././../images/sprite.svg';
 
-const CarItem = ({ car, index }) => {
+const CarItem = ({ car }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFavorite, setIsFavorite] = React.useState(() => {
     const favoriteCars = JSON.parse(localStorage.getItem('favoriteCars')) || {};
@@ -50,15 +50,8 @@ const CarItem = ({ car, index }) => {
     country = addressParts[2];
   }
 
-  // const address = car.address;
-  // const addressParts = address.split(', ');
-  // const city = addressParts[1];
-  // const country = addressParts[2];
-
   return (
-    // <li className={css.catalogCarsItem} key={id} car={car}>
-    <li className={css.catalogCarsItem} key={index}>
-      {/* <li className={css.catalogCarsItem}> */}
+    <li className={css.catalogCarsItem}>
       <Card sx={{ boxShadow: 'none', width: 274 }}>
         <button
           className={css.carItemHeartButton}
