@@ -9,7 +9,7 @@ const Favorite = () => {
   useEffect(() => {
     async function fetchSearchCars() {
       try {
-        const data = await fetchCars('/advert');
+        const data = await fetchCars('adverts');
         setCars(data);
       } catch (error) {
         console.error(error);
