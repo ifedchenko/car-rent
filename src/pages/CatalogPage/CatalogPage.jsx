@@ -11,7 +11,7 @@ const Catalog = () => {
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState([]);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const limit = 10;
 
   const loadMoreCars = async () => {
     try {
