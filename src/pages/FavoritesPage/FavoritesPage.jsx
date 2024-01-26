@@ -25,7 +25,7 @@ const Favorite = () => {
     const favoriteCarsIDs = Object.keys(favoriteStorageCars).map(Number);
     const filteredFavoriteCars = cars.filter(car => favoriteCarsIDs.includes(car.id));
     setFavoriteCars(filteredFavoriteCars);
-  }, [cars]);
+  }, [cars, favoriteCars]);
 
   return (
     <section className="container">
