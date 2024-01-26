@@ -1,6 +1,6 @@
 import CarList from '../../components/CarList/CarList';
 import CarFilter from '../../components/CarFilter/CarFilter';
-import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 import Box from '@mui/material/Box';
 import { Puff } from 'react-loader-spinner';
 import { useEffect, useState } from 'react';
@@ -8,6 +8,7 @@ import { fetchPaginatedCars, fetchCars } from '../../helpers/fetchCars';
 
 const Catalog = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [loadMore, setLoadMore] = useState(false);
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState([]);
   const [page, setPage] = useState(1);
@@ -15,11 +16,14 @@ const Catalog = () => {
 
   const loadMoreCars = async () => {
     try {
+      setLoadMore(true);
       const newCars = await fetchPaginatedCars('adverts', page, limit);
       setFilteredCars(prevCars => [...prevCars, ...newCars]);
       setPage(prevPage => prevPage + 1);
     } catch (error) {
       console.error('Failed to load more cars:', error);
+    } finally {
+      setLoadMore(false);
     }
   };
 
@@ -66,18 +70,19 @@ const Catalog = () => {
         <>
           <CarList cars={filteredCars} />
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Button
+            <LoadingButton
               sx={{
                 fontFamily: 'Manrope',
                 fontSize: 14,
                 fontWeight: 600,
                 marginTop: 10,
               }}
-              variant="contained"
+              loading={loadMore}
+              variant="outlined"
               onClick={loadMoreCars}
             >
               Load more
-            </Button>
+            </LoadingButton>
           </Box>
         </>
       )}
