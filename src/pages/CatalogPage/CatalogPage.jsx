@@ -1,20 +1,21 @@
 import CarList from '../../components/CarList/CarList';
 import CarFilter from '../../components/CarFilter/CarFilter';
-import { useEffect, useState } from 'react';
-import { fetchPaginatedCars, fetchCars } from '../../helpers/fetchCars';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { Puff } from 'react-loader-spinner';
+import { useEffect, useState } from 'react';
+import { fetchPaginatedCars, fetchCars } from '../../helpers/fetchCars';
 
 const Catalog = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState([]);
   const [page, setPage] = useState(1);
-  const limit = 8;
+  const [limit, setLimit] = useState(10);
 
   const loadMoreCars = async () => {
     try {
       const newCars = await fetchPaginatedCars('adverts', page, limit);
-      // setCars(prevCars => [...prevCars, ...newCars]);
       setFilteredCars(prevCars => [...prevCars, ...newCars]);
       setPage(prevPage => prevPage + 1);
     } catch (error) {
@@ -24,6 +25,8 @@ const Catalog = () => {
 
   useEffect(() => {
     let isMounted = true;
+    setIsLoading(true);
+
     async function fetchSearchCars() {
       try {
         const data = await fetchPaginatedCars('adverts', page, limit);
@@ -34,6 +37,10 @@ const Catalog = () => {
       } catch (error) {
         if (isMounted) {
           console.error(error);
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
         }
       }
     }
@@ -49,23 +56,32 @@ const Catalog = () => {
   return (
     <section className="container">
       <CarFilter setFilteredCars={setFilteredCars} cars={cars} />
-      <CarList cars={filteredCars} />
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Button
-          sx={{
-            fontFamily: 'Manrope',
-            fontSize: 14,
-            fontWeight: 600,
-            marginTop: 10,
-          }}
-          variant="contained"
-          onClick={loadMoreCars}
+      {isLoading ? (
+        <Box
+          sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}
         >
-          Load more
-        </Button>
-      </Box>
+          <Puff loading={isLoading} size={100} color="#1976d2" />
+        </Box>
+      ) : (
+        <>
+          <CarList cars={filteredCars} />
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Button
+              sx={{
+                fontFamily: 'Manrope',
+                fontSize: 14,
+                fontWeight: 600,
+                marginTop: 10,
+              }}
+              variant="contained"
+              onClick={loadMoreCars}
+            >
+              Load more
+            </Button>
+          </Box>
+        </>
+      )}
     </section>
   );
 };
-
 export default Catalog;
